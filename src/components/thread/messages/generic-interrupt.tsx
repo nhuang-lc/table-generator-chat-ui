@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
-function isComplexValue(value: any): boolean {
+export function isComplexValue(value: any): boolean {
   return Array.isArray(value) || (typeof value === "object" && value !== null);
 }
 
@@ -96,11 +96,11 @@ export function GenericInterruptView({
                         </td>
                         <td className="px-4 py-2 text-sm text-gray-500">
                           {isComplexValue(value) ? (
-                            <code className="rounded bg-gray-50 px-2 py-1 font-mono text-sm">
-                              {JSON.stringify(value, null, 2)}
+                            <code className="rounded bg-gray-50 px-2 py-1 font-mono text-sm whitespace-pre-wrap">
+                              {JSON.stringify(value, null, 2)}                             
                             </code>
                           ) : (
-                            String(value)
+                            <span className="whitespace-pre-wrap">{String(value)}</span>
                           )}
                         </td>
                       </tr>
